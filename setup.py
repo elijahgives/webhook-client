@@ -19,5 +19,5 @@ setuptools.setup(
          "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
          "Operating System :: OS Independent",
      ],
-    packages=["webhook_client"],
+    packages=["discord.py", "requests", "typing"],
 )
