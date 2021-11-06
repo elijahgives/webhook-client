@@ -1,8 +1,8 @@
-from core import WebhookClient, Embed
+from webhook_client import WebhookClient, Embed
 import datetime
 
 client = WebhookClient(
-    webhook_url="https://discord.com/api/webhooks/906585629092102144/36t_wa8PuYUYsngE8D7rMumVVdQvrV4LiBROon3Ftslw2aWYhLJriXm9k_xWY71iDruj",
+    webhook_url="HOOK_URL",
     username="github.com/elijahgives",
     avatar_url="https://cdn.discordapp.com/attachments/906585612663009314/906624383152431234/gift-gif.gif"
         )
