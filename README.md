@@ -12,7 +12,7 @@ client = WebhookClient(
     avatar_url="https://cdn.discordapp.com/attachments/906585612663009314/906624383152431234/gift-gif.gif"
         )
 
-embed = embed.Embed(
+embed = Embed(
     title='Hello, world.',
     description='This is a test embed from DiscordWebhook by ElijahGives.',
     timestamp=datetime.datetime.utcnow()
