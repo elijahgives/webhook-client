@@ -33,10 +33,9 @@ class WebhookClient:
         else:
             return {'title': 'Invalid Embed.'}
 
-    def build_json(self, content: str = None, embeds: list = None, username: str = None, avatar_url: str = None):
+    def build_json(self, content: str = None, embeds: list = None, username: str = None, avatar_url: str = None, tts: bool = False):
         json_data = {}
         embed_list = []
-        embed_data = {}
         
         if embeds:
             for embed in embeds:
@@ -48,10 +47,20 @@ class WebhookClient:
         json_data['embeds'] = embed_list
         json_data['username'] = username
         json_data['avatar_url'] = avatar_url
+
         return json_data
                     
 
-    def send(self, content: str = None, embeds: list = None):
-        json_data = self.build_json(content, embeds, self.username, self.avatar_url)
+    def send(self, content: str = None, embeds: list = None, tts: bool = False):
+        """ Send a message to your WebhookClient.
+        
+        
+        content: :class:`str`
+            The content for the message.
+        embeds: :class:`list`
+            List of `Embed`s to send in the message.
+        tts: :class:`bool`
+            Whether or not the message should be sent as text-to-speech. """
+        json_data = self.build_json(content, embeds, self.username, self.avatar_url, tts)
         
         r = requests.post(str(self.webhook_url), json=json_data)
