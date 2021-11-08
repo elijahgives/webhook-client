@@ -1,4 +1,4 @@
-# DiscordWebhook
+# discord-webhook
 A discord webhook client written in Python.
 
 ## Installation
