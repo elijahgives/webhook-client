@@ -50,9 +50,14 @@ class WebhookClient:
         json_data['tts'] = tts
 
         return json_data
-                    
+    
+    def build_query(self, webhook_url: str, thread_id: int = None):
+        base_url = f"{webhook_url}"
+        if thread_id:
+            base_url += f"?thread_id={str(thread_id)}"
+        return str(base_url)
 
-    def send(self, content: str = None, embeds: list = None, tts: bool = False):
+    def send(self, content: str = None, embeds: list = None, tts: bool = False, thread_id: int = None):
         """ Send a message to your WebhookClient.
         
         
@@ -61,7 +66,9 @@ class WebhookClient:
         embeds: :class:`list`
             List of `Embed`s to send in the message.
         tts: :class:`bool`
-            Whether or not the message should be sent as text-to-speech. """
+            Whether or not the message should be sent as text-to-speech. Defaults to `False`.
+        thread_id: :class:`int`
+            The thread ID that the webhook should be posted in. Defaults to `None`. """
         json_data = self.build_json(self.webhook_url, content, embeds, self.username, self.avatar_url, tts)
-        
-        r = requests.post(str(self.webhook_url), json=json_data)
+        query_str = self.build_query(self.webhook_url, thread_id)
+        r = requests.post(str(query_str), json=json_data)

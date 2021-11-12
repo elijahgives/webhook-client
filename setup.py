@@ -6,7 +6,7 @@ fh.close()
 
 setuptools.setup(
     name="webhook-client",
-    version="1.0.1",
+    version="1.0.2",
     author="ElijahGives",
     author_email="elijahgives13@gmail.com",
     description="A discord webhook client written in Python.",
